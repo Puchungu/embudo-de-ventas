@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joya Garage | Importación Directa y Venta de Vehículos Certificados</title>
+    <meta name="description" content="Encuentra tu próximo vehículo importado sin riesgos ni sobrecostos con Joya Garage. Trámites llave en mano e historial 100% verificado.">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración personalizada de Tailwind para la identidad visual de Joya Garage -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: {
+                            950: '#07080A',
+                            900: '#0B0D10',
+                            800: '#14181F',
+                            700: '#1D232D',
+                            600: '#2A3241',
+                        },
+                        gold: {
+                            400: '#F59E0B',
+                            500: '#D4AF37',
+                            600: '#B59024',
+                        }
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 25px -5px rgba(212, 175, 55, 0.35)',
+                        'card-dark': '0 15px 35px -10px rgba(0, 0, 0, 0.65)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos mínimos para animaciones suaves de aparición y microinteracciones -->
+    <style>
+        body {
+            background-color: #0B0D10;
+            color: #F3F4F6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animación de revelado al hacer scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Transición suave para pasos del embudo */
+        .funnel-step {
+            animation: fadeSlideIn 0.35s ease-out forwards;
+        }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Gradiente metálico dorado para texto destacado */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #FDE68A 0%, #D4AF37 50%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Pulso sutil para el botón flotante de WhatsApp */
+        @keyframes pulseRing {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+            70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+        .whatsapp-pulse {
+            animation: pulseRing 2.5s infinite;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500/30 selection:text-gold-400">
+
+    <!-- =====================================================================
+         1. BARRA DE NAVEGACIÓN MINIMALISTA (STICKY)
+         ===================================================================== -->
+    <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-obsidian-900/85 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Tipográfico + SVG Diamante/Volante -->
+                <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-500/20 to-gold-400/5 border border-gold-500/40 flex items-center justify-center group-hover:border-gold-400 transition-colors">
+                        <!-- Ícono híbrido de diamante y volante en SVG -->
+                        <svg class="w-6 h-6 text-gold-500 group-hover:scale-105 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9.5"></circle>
+                            <path d="M12 6.5L16.5 11.5L12 17.5L7.5 11.5L12 6.5Z" fill="rgba(212,175,55,0.2)"></path>
+                            <path d="M3.2 12H7.5"></path>
+                            <path d="M16.5 12H20.8"></path>
+                            <path d="M12 17.5V21.5"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-lg sm:text-xl font-extrabold tracking-wider text-white leading-none">
+                            JOYA <span class="text-gold-500">GARAGE</span>
+                        </span>
+                        <span class="text-[10px] uppercase tracking-[0.22em] text-gray-400 mt-0.5">Importadora Automotriz</span>
+                    </div>
+                </a>
+
+                <!-- Enlaces de navegación (Escritorio) -->
+                <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
+                    <a href="#proceso" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Proceso</a>
+                    <a href="#inventario" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Inventario</a>
+                    <a href="#testimonios" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Testimonios</a>
+                    <a href="#preguntas" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Preguntas</a>
+                </nav>
+
+                <!-- Botón CTA y Menú Móvil -->
+                <div class="flex items-center gap-3">
+                    <a href="#cotizador" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-obsidian-950 font-bold text-sm shadow-gold-glow hover:brightness-110 active:scale-[0.98] transition-all">
+                        Cotizar Ahora
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    </a>
+
+                    <!-- Botón Hamburguesa (Móvil) -->
+                    <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl bg-obsidian-800 border border-white/10 text-gray-300 hover:text-white hover:border-gold-500/40 transition-colors">
+                        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-obsidian-800/95 backdrop-blur-xl border-b border-white/10">
+            <div class="px-4 pt-3 pb-5 space-y-2">
+                <a href="#proceso" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-gold-400 transition-colors">Proceso</a>
+                <a href="#inventario" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-gold-400 transition-colors">Inventario</a>
+                <a href="#testimonios" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-gold-400 transition-colors">Testimonios</a>
+                <a href="#preguntas" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-gold-400 transition-colors">Preguntas Frecuentes</a>
+                <div class="pt-2">
+                    <a href="#cotizador" class="mobile-nav-link flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-obsidian-950 font-bold text-base shadow-gold-glow">
+                        Cotizar Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- =================================================================
+             2. SECCIÓN HERO (TOPE DEL EMBUDO)
+             ================================================================= -->
+        <section id="inicio" class="relative pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden">
+            <!-- Fondo automotriz con superposición oscura de alto contraste -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1920&q=80"
+                     alt="Vehículo deportivo elegante en showroom oscuro"
+                     onerror="this.style.display='none'"
+                     class="w-full h-full object-cover object-center opacity-25 scale-105">
+                <div class="absolute inset-0 bg-gradient-to-b from-obsidian-900/90 via-obsidian-900/80 to-obsidian-900"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.14)_0%,_transparent_60%)]"></div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <!-- Etiqueta superior -->
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs sm:text-sm font-semibold tracking-wide mb-6">
+                        <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+                        Importación Directa y Venta de Vehículos Certificados
+                    </div>
+
+                    <!-- Titular potente -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+                        Encuentra tu próximo vehículo importado <span class="text-gold-gradient">sin riesgos ni sobrecostos.</span>
+                    </h1>
+
+                    <!-- Subtítulo claro -->
+                    <p class="text-base sm:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-10">
+                        En <strong class="text-white font-semibold">Joya Garage</strong> nos encargamos de todo: desde la búsqueda en subastas y concesionarios, inspección mecánica y verificación de historial, hasta los trámites aduanales y entrega llave en mano.
+                    </p>
+
+                    <!-- Botones CTA -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                        <a href="#cotizador" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-obsidian-950 font-extrabold text-base shadow-gold-glow hover:brightness-110 active:scale-[0.98] transition-all">
+                            Iniciar mi Cotización
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        </a>
+                        <a href="#inventario" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-obsidian-800/90 border border-white/15 text-white font-semibold text-base hover:border-gold-500/50 hover:bg-obsidian-700 active:scale-[0.98] transition-all">
+                            Ver Inventario Disponible
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Barra de Métricas de Confianza -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
+                    <div class="p-5 rounded-2xl bg-obsidian-800/80 border border-white/10 backdrop-blur-sm flex items-center gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-lg sm:text-xl font-extrabold text-white">+350</p>
+                            <p class="text-xs sm:text-sm text-gray-400">Vehículos Entregados</p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-obsidian-800/80 border border-white/10 backdrop-blur-sm flex items-center gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-lg sm:text-xl font-extrabold text-white">100%</p>
+                            <p class="text-xs sm:text-sm text-gray-400">Historial Verificado</p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-obsidian-800/80 border border-white/10 backdrop-blur-sm flex items-center gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-lg sm:text-xl font-extrabold text-white">Llave en Mano</p>
+                            <p class="text-xs sm:text-sm text-gray-400">Trámites Completos</p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-obsidian-800/80 border border-white/10 backdrop-blur-sm flex items-center gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-lg sm:text-xl font-extrabold text-white">1 a 1</p>
+                            <p class="text-xs sm:text-sm text-gray-400">Asesoría Personalizada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             3. EMBUDO INTERACTIVO PASO A PASO (CALIFICADOR DE PROSPECTOS)
+             ================================================================= -->
+        <section id="cotizador" class="py-16 sm:py-24 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-400">Cotizador Inteligente en 60 Segundos</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+                        Diseña tu compra a la medida
+                    </h2>
+                    <p class="text-gray-400 mt-3 max-w-xl mx-auto text-sm sm:text-base">
+                        Responde 4 preguntas rápidas y recibe un listado curado de opciones reales con costos transparentes puestos en tus manos.
+                    </p>
+                </div>
+
+                <!-- Tarjeta Interactiva del Embudo -->
+                <div class="rounded-3xl bg-obsidian-800 border border-gold-500/25 shadow-card-dark overflow-hidden">
+                    <!-- Barra de Progreso Superior -->
+                    <div id="funnel-header" class="px-6 sm:px-10 pt-7 pb-5 border-b border-white/5 bg-obsidian-800/60">
+                        <div class="flex items-center justify-between text-xs sm:text-sm font-semibold mb-3">
+                            <span id="step-indicator" class="text-gold-400">Paso 1 de 4</span>
+                            <span id="step-percent" class="text-gray-400">25% completado</span>
+                        </div>
+                        <div class="w-full h-2 rounded-full bg-obsidian-900 overflow-hidden">
+                            <div id="progress-bar" class="h-full rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 transition-all duration-500" style="width: 25%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Cuerpo Dinámico del Embudo -->
+                    <div class="p-6 sm:p-10">
+                        <!-- PASO 1: Servicio -->
+                        <div id="step-1" class="funnel-step">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">¿Qué servicio necesitas hoy?</h3>
+                            <p class="text-sm text-gray-400 mb-6">Selecciona la modalidad que mejor se adapta a tus tiempos y preferencias.</p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <button type="button" onclick="selectOption('service', 'Comprar del inventario disponible', 2)"
+                                        class="group text-left p-6 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 transition-all focus:outline-none focus:ring-2 focus:ring-gold-500">
+                                    <div class="w-12 h-12 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+                                    </div>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-gold-400 transition-colors">Comprar del inventario disponible</h4>
+                                    <p class="text-sm text-gray-400 mt-1.5">Vehículos ya inspeccionados, listos para entrega inmediata o en tránsito cercano.</p>
+                                </button>
+
+                                <button type="button" onclick="selectOption('service', 'Importar un vehículo a la medida', 2)"
+                                        class="group text-left p-6 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 transition-all focus:outline-none focus:ring-2 focus:ring-gold-500">
+                                    <div class="w-12 h-12 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                                    </div>
+                                    <h4 class="text-lg font-bold text-white group-hover:text-gold-400 transition-colors">Importar un vehículo a la medida</h4>
+                                    <p class="text-sm text-gray-400 mt-1.5">Buscamos el año, color y versión exacta directo en subastas o concesionarios.</p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- PASO 2: Tipo de Vehículo -->
+                        <div id="step-2" class="funnel-step hidden">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">¿Qué tipo de vehículo buscas?</h3>
+                            <p class="text-sm text-gray-400 mb-6">Elige la carrocería ideal para tu estilo de vida o trabajo.</p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <button type="button" onclick="selectOption('vehicleType', 'Sedán', 3)"
+                                        class="group flex items-center gap-4 text-left p-5 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 transition-all">
+                                    <div class="w-12 h-12 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center shrink-0">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13l2-5a2 2 0 011.9-1.3h10.2a2 2 0 011.9 1.3l2 5M3 13v4a1 1 0 001 1h1m16-5v4a1 1 0 01-1 1h-1M3 13h18M7 18a2 2 0 11-4 0 2 2 0 014 0zm14 0a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-base font-bold text-white group-hover:text-gold-400">Sedán</h4>
+                                        <p class="text-xs text-gray-400">Eficiente, cómodo y ágil para ciudad y carretera.</p>
+                                    </div>
+                                </button>
+
+                                <button type="button" onclick="selectOption('vehicleType', 'SUV / Camioneta', 3)"
+                                        class="group flex items-center gap-4 text-left p-5 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 transition-all">
+                                    <div class="w-12 h-12 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center shrink-0">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l1.5-4.5A2 2 0 016.4 6h11.2a2 2 0 011.9 1.5L21 12M3 12v5a1 1 0 001 1h1m16-6v5a1 1 0 01-1 1h-1M3 12h18M7 18a2 2 0 11-4 0 2 2 0 014 0zm14 0a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-base font-bold text-white group-hover:text-gold-400">SUV / Camioneta</h4>
+                                        <p class="text-xs text-gray-400">Espacio familiar, altura y versatilidad todo terreno.</p>
+                                    </div>
+                                </button>
+
+                                <button type="button" onclick="selectOption('vehicleType', 'Pick-up', 3)"
+                                        class="group flex items-center gap-4 text-left p-5 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 transition-all">
+                                    <div class="w-12 h-12 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center shrink-0">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 13h10l2-5h4.5a1.5 1.5 0 011.4 1l1.1 4v4a1 1 0 01-1 1h-1M2 13v4a1 1 0 001 1h1m3 0a2 2 0 11-4 0 2 2 0 014 0zm14 0a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-base font-bold text-white group-hover:text-gold-400">Pick-up</h4>
+                                        <p class="text-xs text-gray-400">Potencia, tracción 4x4 y capacidad de carga.</p>
+                                    </div>
+                                </button>
+
+                                <button type="button" onclick="selectOption('vehicleType', 'Deportivo / Lujo', 3)"
+                                        class="group flex items-center gap-4 text-left p-5 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 transition-all">
+                                    <div class="w-12 h-12 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center shrink-0">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-base font-bold text-white group-hover:text-gold-400">Deportivo / Lujo</h4>
+                                        <p class="text-xs text-gray-400">Alto rendimiento, acabados premium y exclusividad.</p>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div class="mt-6">
+                                <button type="button" onclick="goToStep(1)" class="text-sm text-gray-400 hover:text-white inline-flex items-center gap-1.5 transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                                    Volver al paso anterior
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- PASO 3: Presupuesto -->
+                        <div id="step-3" class="funnel-step hidden">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">¿Cuál es tu presupuesto aproximado?</h3>
+                            <p class="text-sm text-gray-400 mb-6">Montos estimados en dólares estadounidenses (USD) incluyendo importación.</p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <button type="button" onclick="selectOption('budget', '$8,000 - $15,000', 4)"
+                                        class="group p-5 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 text-left transition-all">
+                                    <span class="text-xs font-semibold uppercase tracking-wider text-gold-400">Rango Inicial</span>
+                                    <p class="text-xl font-extrabold text-white mt-1">$8,000 - $15,000</p>
+                                </button>
+
+                                <button type="button" onclick="selectOption('budget', '$15,000 - $25,000', 4)"
+                                        class="group p-5 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 text-left transition-all">
+                                    <span class="text-xs font-semibold uppercase tracking-wider text-gold-400">Más Popular</span>
+                                    <p class="text-xl font-extrabold text-white mt-1">$15,000 - $25,000</p>
+                                </button>
+
+                                <button type="button" onclick="selectOption('budget', '$25,000 - $40,000', 4)"
+                                        class="group p-5 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 text-left transition-all">
+                                    <span class="text-xs font-semibold uppercase tracking-wider text-gold-400">Gama Alta</span>
+                                    <p class="text-xl font-extrabold text-white mt-1">$25,000 - $40,000</p>
+                                </button>
+
+                                <button type="button" onclick="selectOption('budget', 'Más de $40,000', 4)"
+                                        class="group p-5 rounded-2xl bg-obsidian-900/70 border border-white/10 hover:border-gold-500 hover:bg-obsidian-700/60 text-left transition-all">
+                                    <span class="text-xs font-semibold uppercase tracking-wider text-gold-400">Lujo / Exclusivo</span>
+                                    <p class="text-xl font-extrabold text-white mt-1">Más de $40,000</p>
+                                </button>
+                            </div>
+
+                            <div class="mt-6">
+                                <button type="button" onclick="goToStep(2)" class="text-sm text-gray-400 hover:text-white inline-flex items-center gap-1.5 transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                                    Volver al paso anterior
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- PASO 4: Datos del Cliente -->
+                        <div id="step-4" class="funnel-step hidden">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">¡Último paso! ¿Dónde enviamos tus opciones?</h3>
+                            <p class="text-sm text-gray-400 mb-6">Un asesor especializado de Joya Garage te enviará fotografías reales, reportes y cotización desglosada.</p>
+
+                            <form id="funnel-form" class="space-y-4" novalidate>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="lead-name" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Tu Nombre Completo *</label>
+                                        <input type="text" id="lead-name" required placeholder="Ej. Carlos Mendoza"
+                                               class="w-full px-4 py-3.5 rounded-xl bg-obsidian-900 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors">
+                                    </div>
+                                    <div>
+                                        <label for="lead-whatsapp" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Número de WhatsApp *</label>
+                                        <input type="tel" id="lead-whatsapp" required placeholder="Ej. +503 7000-0000"
+                                               class="w-full px-4 py-3.5 rounded-xl bg-obsidian-900 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="lead-model" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Modelo específico que tienes en mente <span class="text-gray-500 lowercase font-normal">(opcional)</span></label>
+                                    <input type="text" id="lead-model" placeholder="Ej. Toyota RAV4 2021 blanca o Honda Civic Touring"
+                                           class="w-full px-4 py-3.5 rounded-xl bg-obsidian-900 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors">
+                                </div>
+
+                                <!-- Mensaje de error inline (sin usar alert) -->
+                                <p id="funnel-error" class="hidden text-sm text-red-400 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-2.5">
+                                    Por favor ingresa tu nombre y un número de WhatsApp válido para enviarte tus opciones.
+                                </p>
+
+                                <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                    <button type="button" onclick="goToStep(3)" class="text-sm text-gray-400 hover:text-white inline-flex items-center gap-1.5 transition-colors order-2 sm:order-1">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                                        Cambiar presupuesto
+                                    </button>
+
+                                    <button type="submit" class="w-full sm:w-auto order-1 sm:order-2 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-obsidian-950 font-extrabold text-base shadow-gold-glow hover:brightness-110 active:scale-[0.98] transition-all">
+                                        Recibir Opciones Personalizadas
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- PANTALLA DE CONFIRMACIÓN DINÁMICA -->
+                        <div id="step-confirmation" class="funnel-step hidden text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto mb-5">
+                                <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">¡Solicitud recibida, <span id="confirm-name" class="text-gold-400"></span>!</h3>
+                            <p class="text-sm sm:text-base text-gray-300 max-w-lg mx-auto mb-6">
+                                Nuestro equipo ya está filtrando las mejores unidades para ti. Tiempo estimado de respuesta: <strong class="text-white">menos de 15 minutos</strong> en horario hábil.
+                            </p>
+
+                            <!-- Resumen de selecciones -->
+                            <div class="max-w-lg mx-auto rounded-2xl bg-obsidian-900/90 border border-white/10 p-5 text-left space-y-3 mb-7">
+                                <p class="text-xs font-bold uppercase tracking-wider text-gold-400 border-b border-white/10 pb-2">Resumen de tu Cotización</p>
+                                <div class="flex justify-between text-sm gap-4">
+                                    <span class="text-gray-400">Servicio:</span>
+                                    <span id="summary-service" class="text-white font-semibold text-right"></span>
+                                </div>
+                                <div class="flex justify-between text-sm gap-4">
+                                    <span class="text-gray-400">Tipo de vehículo:</span>
+                                    <span id="summary-type" class="text-white font-semibold text-right"></span>
+                                </div>
+                                <div class="flex justify-between text-sm gap-4">
+                                    <span class="text-gray-400">Presupuesto:</span>
+                                    <span id="summary-budget" class="text-gold-400 font-bold text-right"></span>
+                                </div>
+                                <div class="flex justify-between text-sm gap-4">
+                                    <span class="text-gray-400">WhatsApp:</span>
+                                    <span id="summary-whatsapp" class="text-white font-semibold text-right"></span>
+                                </div>
+                                <div id="summary-model-row" class="flex justify-between text-sm gap-4 hidden">
+                                    <span class="text-gray-400">Modelo de interés:</span>
+                                    <span id="summary-model" class="text-white font-semibold text-right"></span>
+                                </div>
+                            </div>
+
+                            <!-- Acciones Post-Envío -->
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <a id="whatsapp-summary-link" href="#" target="_blank" rel="noopener noreferrer"
+                                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-extrabold text-base transition-all shadow-lg">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.828 14.125c-.25.703-1.438 1.344-2 1.422-.516.078-1.172.109-1.906-.125-.453-.141-1.031-.344-1.766-.656-3.094-1.344-5.109-4.484-5.266-4.688-.156-.203-1.266-1.688-1.266-3.219 0-1.531.797-2.281 1.078-2.594.281-.312.625-.391.828-.391.203 0 .406.016.594.016.188 0 .453-.078.703.531.25.625.875 2.141.953 2.297.078.156.125.344.016.547-.109.203-.156.344-.312.531-.156.188-.328.406-.469.547-.156.156-.328.328-.141.656.188.328.828 1.375 1.781 2.219 1.234 1.094 2.266 1.438 2.594 1.594.328.156.516.125.703-.094.188-.219.812-.953 1.031-1.281.219-.328.438-.266.734-.156.297.109 1.906.891 2.234 1.062.328.156.547.234.625.375.078.141.078.812-.172 1.516z"/></svg>
+                                    Enviar Resumen por WhatsApp
+                                </a>
+
+                                <button type="button" onclick="resetFunnel()"
+                                        class="w-full sm:w-auto px-6 py-4 rounded-xl bg-obsidian-900 border border-white/15 text-gray-300 hover:text-white hover:border-white/30 font-semibold text-sm transition-colors">
+                                    Hacer otra cotización
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             4. PROCESO DE IMPORTACIÓN Y COMPRA (4 PASOS CLAROS)
+             ================================================================= -->
+        <section id="proceso" class="py-16 sm:py-24 bg-obsidian-950/60 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-400">Transparencia Total</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+                        Tu vehículo en 4 pasos sin estrés
+                    </h2>
+                    <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                        Eliminamos la incertidumbre de importar un auto. Acompañamiento real y reportes en cada etapa.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Paso 1 -->
+                    <div class="relative p-7 rounded-2xl bg-obsidian-800 border border-white/10 hover:border-gold-500/40 transition-all group">
+                        <span class="text-5xl font-black text-white/5 absolute top-4 right-5 group-hover:text-gold-500/15 transition-colors">01</span>
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Asesoría y Búsqueda</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Accedemos directamente a subastas exclusivas y concesionarios certificados en EE. UU. para encontrar la mejor unidad dentro de tu presupuesto.
+                        </p>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="relative p-7 rounded-2xl bg-obsidian-800 border border-white/10 hover:border-gold-500/40 transition-all group">
+                        <span class="text-5xl font-black text-white/5 absolute top-4 right-5 group-hover:text-gold-500/15 transition-colors">02</span>
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Inspección y Verificación</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Auditamos el historial completo (millaje real, mantenimientos, reportes de accidentes) y validamos el estado mecánico antes de comprar.
+                        </p>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="relative p-7 rounded-2xl bg-obsidian-800 border border-white/10 hover:border-gold-500/40 transition-all group">
+                        <span class="text-5xl font-black text-white/5 absolute top-4 right-5 group-hover:text-gold-500/15 transition-colors">03</span>
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Logística y Aduanas</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Gestionamos grúa, flete marítimo/terrestre asegurado, pago de impuestos y nacionalización sin que pierdas tiempo en trámites.
+                        </p>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="relative p-7 rounded-2xl bg-obsidian-800 border border-white/10 hover:border-gold-500/40 transition-all group">
+                        <span class="text-5xl font-black text-white/5 absolute top-4 right-5 group-hover:text-gold-500/15 transition-colors">04</span>
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Entrega Llave en Mano</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Te entregamos tu vehículo detallado, revisado y con su documentación legal en regla, listo para encender y disfrutar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             5. INVENTARIO DESTACADO CON FILTROS INTERACTIVOS
+             ================================================================= -->
+        <section id="inventario" class="py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-400">Catálogo Seleccionado</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+                            Inventario Destacado
+                        </h2>
+                        <p class="text-gray-400 mt-2 text-sm sm:text-base max-w-xl">
+                            Unidades seleccionadas por su excelente estado mecánico, bajo kilometraje y alto valor de reventa.
+                        </p>
+                    </div>
+
+                    <!-- Botones de Filtro -->
+                    <div id="inventory-filters" class="flex flex-wrap gap-2">
+                        <button type="button" data-filter="Todos" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-gold-500 text-obsidian-950 transition-all">Todos</button>
+                        <button type="button" data-filter="SUV" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-obsidian-800 text-gray-300 border border-white/10 hover:border-gold-500/50 transition-all">SUV</button>
+                        <button type="button" data-filter="Sedán" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-obsidian-800 text-gray-300 border border-white/10 hover:border-gold-500/50 transition-all">Sedán</button>
+                        <button type="button" data-filter="Pick-up" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-obsidian-800 text-gray-300 border border-white/10 hover:border-gold-500/50 transition-all">Pick-up</button>
+                    </div>
+                </div>
+
+                <!-- Grid de Vehículos (Renderizado dinámicamente con JS) -->
+                <div id="inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                    <!-- Las tarjetas se inyectan aquí -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             6. PRUEBA SOCIAL (TESTIMONIOS)
+             ================================================================= -->
+        <section id="testimonios" class="py-16 sm:py-24 bg-obsidian-950/60 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-400">Clientes Satisfechos</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+                        Historias reales al volante
+                    </h2>
+                    <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                        Nuestra mejor garantía es la confianza de quienes ya estrenaron su vehículo con Joya Garage.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Testimonio 1 -->
+                    <article class="p-7 rounded-2xl bg-obsidian-800 border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1 text-gold-400 mb-4" aria-label="5 de 5 estrellas">
+                                ★★★★★
+                            </div>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed italic">
+                                "Tenía miedo de importar un carro por mi cuenta y que viniera con daños ocultos. En Joya Garage me mostraron fotos de la subasta, el reporte limpio y me ahorré más de $3,200 comparado con precios locales."
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-full bg-gold-500/20 border border-gold-500/40 text-gold-400 font-bold flex items-center justify-center">
+                                RM
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Roberto Martínez</h4>
+                                <p class="text-xs text-gold-400">Adquirió: Toyota RAV4 XLE 2021</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Testimonio 2 -->
+                    <article class="p-7 rounded-2xl bg-obsidian-800 border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1 text-gold-400 mb-4" aria-label="5 de 5 estrellas">
+                                ★★★★★
+                            </div>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed italic">
+                                "Excelente atención desde el primer mensaje por WhatsApp. Compré un Civic que tenían disponible en inventario y en menos de 48 horas ya estaba manejándolo con todos sus papeles al día."
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-full bg-gold-500/20 border border-gold-500/40 text-gold-400 font-bold flex items-center justify-center">
+                                AV
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Andrea Villalta</h4>
+                                <p class="text-xs text-gold-400">Adquirió: Honda Civic Touring 2022</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Testimonio 3 -->
+                    <article class="p-7 rounded-2xl bg-obsidian-800 border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1 text-gold-400 mb-4" aria-label="5 de 5 estrellas">
+                                ★★★★★
+                            </div>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed italic">
+                                "Necesitaba una pick-up confiable para mi empresa. Me asesoraron en cada paso, me enviaban seguimiento semanal del barco y la entrega fue impecable. Sin duda vuelvo a comprar con ellos."
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-full bg-gold-500/20 border border-gold-500/40 text-gold-400 font-bold flex items-center justify-center">
+                                DH
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Diego Hernández</h4>
+                                <p class="text-xs text-gold-400">Adquirió: Ford F-150 XLT 4x4 2020</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             7. MANEJO DE OBJECIONES (PREGUNTAS FRECUENTES - ACORDEÓN)
+             ================================================================= -->
+        <section id="preguntas" class="py-16 sm:py-24">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+                <div class="text-center mb-12">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-400">Resolvemos tus Dudas</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+                        Preguntas Frecuentes
+                    </h2>
+                </div>
+
+                <div class="space-y-3" id="faq-accordion">
+                    <!-- Pregunta 1 -->
+                    <div class="rounded-2xl bg-obsidian-800 border border-white/10 overflow-hidden">
+                        <button type="button" class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
+                            <span class="font-bold text-white text-sm sm:text-base pr-4">¿Cuánto tarda el proceso de importación a la medida?</span>
+                            <svg class="faq-icon w-5 h-5 text-gold-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4">
+                            El tiempo promedio desde la compra en Estados Unidos hasta la entrega llave en mano es de <strong class="text-gray-200">4 a 6 semanas</strong>, dependiendo del estado de origen y el puerto de embarque. Si eliges una unidad de nuestro inventario disponible, la entrega es inmediata (24 a 48 horas).
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="rounded-2xl bg-obsidian-800 border border-white/10 overflow-hidden">
+                        <button type="button" class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
+                            <span class="font-bold text-white text-sm sm:text-base pr-4">¿Todos los vehículos cuentan con historial verificado?</span>
+                            <svg class="faq-icon w-5 h-5 text-gold-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4">
+                            Sí, al 100%. Antes de ofertar o cerrar cualquier compra te entregamos el reporte de historial oficial (CARFAX / AutoCheck) junto con el VIN, fotografías reales de origen y validación de kilometraje. Nunca importamos vehículos inundados ni con daños estructurales graves.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="rounded-2xl bg-obsidian-800 border border-white/10 overflow-hidden">
+                        <button type="button" class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
+                            <span class="font-bold text-white text-sm sm:text-base pr-4">¿El precio cotizado incluye trámites de aduana y placas?</span>
+                            <svg class="faq-icon w-5 h-5 text-gold-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4">
+                            Correcto. Trabajamos con cotizaciones transparentes y desglosadas que incluyen valor del vehículo, transporte terrestre y marítimo, póliza de importación, impuestos aduanales y gestión de primera matrícula para que no existan costos sorpresa al final.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="rounded-2xl bg-obsidian-800 border border-white/10 overflow-hidden">
+                        <button type="button" class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
+                            <span class="font-bold text-white text-sm sm:text-base pr-4">¿Cómo funcionan los pagos y reservas para importar?</span>
+                            <svg class="faq-icon w-5 h-5 text-gold-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4">
+                            Todo queda respaldado mediante contrato formal. Para iniciar una importación a la medida se realiza un depósito reembolsable para habilitar tu puja o compra, luego se cubre el valor del vehículo y flete al adjudicarse, y el saldo de aduanas y entrega se liquida cuando el vehículo ya está en el país.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="rounded-2xl bg-obsidian-800 border border-white/10 overflow-hidden">
+                        <button type="button" class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
+                            <span class="font-bold text-white text-sm sm:text-base pr-4">¿Puedo llevar a mi mecánico a revisar un vehículo del inventario?</span>
+                            <svg class="faq-icon w-5 h-5 text-gold-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4">
+                            ¡Por supuesto! En Joya Garage fomentamos la total tranquilidad. Puedes agendar una prueba de manejo y traer a tu mecánico de confianza o escáner para verificar cada detalle antes de tomar tu decisión.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             8. CIERRE DE CONVERSIÓN (CTA FINAL)
+             ================================================================= -->
+        <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto rounded-3xl relative overflow-hidden border border-gold-500/40 bg-gradient-to-br from-obsidian-800 via-obsidian-900 to-obsidian-950 p-8 sm:p-14 text-center shadow-gold-glow reveal">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(212,175,55,0.22),_transparent_55%)] pointer-events-none"></div>
+
+                <div class="relative z-10">
+                    <span class="inline-block px-4 py-1 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">
+                        Asesoría 100% Gratuita y Sin Compromiso
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight max-w-3xl mx-auto">
+                        ¿Listo para estrenar el vehículo que realmente mereces?
+                    </h2>
+                    <p class="text-gray-300 mt-4 max-w-xl mx-auto text-sm sm:text-base">
+                        Agenda una asesoría personalizada hoy mismo y descubre cuánto puedes ahorrar importando directo con el respaldo de Joya Garage.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="#cotizador" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-obsidian-950 font-extrabold text-base shadow-gold-glow hover:brightness-110 transition-all">
+                            Cotizar mi Vehículo Ahora
+                        </a>
+                        <a href="https://wa.me/50370000000?text=Hola%20Joya%20Garage%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20gratuita%20para%20comprar%20o%20importar%20un%20veh%C3%ADculo."
+                           target="_blank" rel="noopener noreferrer"
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/5 border border-white/15 text-white font-semibold text-base hover:bg-white/10 hover:border-gold-500/40 transition-all">
+                            Hablar con un Asesor
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         FOOTER LIMPIO
+         ===================================================================== -->
+    <footer class="bg-obsidian-950 border-t border-white/10 pt-14 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+                <!-- Marca -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-9 h-9 rounded-xl bg-gold-500/15 border border-gold-500/40 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-gold-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 6.5L16.5 11.5L12 17.5L7.5 11.5L12 6.5Z" fill="rgba(212,175,55,0.2)"></path></svg>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-wider text-white">JOYA <span class="text-gold-500">GARAGE</span></span>
+                    </div>
+                    <p class="text-sm text-gray-400 max-w-md leading-relaxed">
+                        Importadora y comercializadora de vehículos certificados. Transparencia, respaldo mecánico y logística integral para que compres con total seguridad.
+                    </p>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-gold-400 mb-4">Contacto</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li>WhatsApp: +503 7000-0000</li>
+                        <li>Correo: ventas@joyagarage.com</li>
+                        <li>Horario: Lun - Sáb, 8:00 AM - 6:00 PM</li>
+                        <li>Showroom: Blvd. Automotriz #405</li>
+                    </ul>
+                </div>
+
+                <!-- Redes y Enlaces -->
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-gold-400 mb-4">Síguenos</h4>
+                    <div class="flex items-center gap-3">
+                        <a href="#inicio" aria-label="Instagram de Joya Garage" class="w-10 h-10 rounded-xl bg-obsidian-800 border border-white/10 flex items-center justify-center text-gray-300 hover:text-gold-400 hover:border-gold-500/50 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#inicio" aria-label="Facebook de Joya Garage" class="w-10 h-10 rounded-xl bg-obsidian-800 border border-white/10 flex items-center justify-center text-gray-300 hover:text-gold-400 hover:border-gold-500/50 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                        </a>
+                        <a href="#inicio" aria-label="TikTok de Joya Garage" class="w-10 h-10 rounded-xl bg-obsidian-800 border border-white/10 flex items-center justify-center text-gray-300 hover:text-gold-400 hover:border-gold-500/50 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <p>&copy; <span id="current-year"></span> Joya Garage. Todos los derechos reservados.</p>
+                <p>Importación Directa &bull; Vehículos Certificados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         MODAL DE COTIZACIÓN RÁPIDA DE VEHÍCULO
+         ===================================================================== -->
+    <div id="vehicle-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="relative w-full max-w-md rounded-3xl bg-obsidian-800 border border-gold-500/30 p-6 sm:p-8 shadow-2xl">
+            <button type="button" onclick="closeVehicleModal()" aria-label="Cerrar ventana"
+                    class="absolute top-5 right-5 p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <div id="modal-form-view">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-400">Consulta Rápida</span>
+                <h3 id="modal-title" class="text-xl font-extrabold text-white mt-1 mb-1">Cotizar Vehículo</h3>
+                <p id="modal-vehicle-subtitle" class="text-sm text-gray-400 mb-5"></p>
+
+                <form id="modal-quote-form" class="space-y-4" novalidate>
+                    <input type="hidden" id="modal-vehicle-name">
+                    <input type="hidden" id="modal-vehicle-price">
+
+                    <div>
+                        <label for="modal-name" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Tu Nombre *</label>
+                        <input type="text" id="modal-name" required placeholder="Ej. Luis Ramírez"
+                               class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500">
+                    </div>
+
+                    <div>
+                        <label for="modal-phone" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">Tu WhatsApp *</label>
+                        <input type="tel" id="modal-phone" required placeholder="Ej. +503 7000-0000"
+                               class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500">
+                    </div>
+
+                    <div>
+                        <label for="modal-notes" class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1.5">¿Alguna consulta adicional? <span class="text-gray-500 lowercase font-normal">(opcional)</span></label>
+                        <textarea id="modal-notes" rows="2" placeholder="Ej. Me gustaría agendar una visita o conocer opciones de reserva."
+                                  class="w-full px-4 py-3 rounded-xl bg-obsidian-900 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500"></textarea>
+                    </div>
+
+                    <p id="modal-error" class="hidden text-xs text-red-400 bg-red-500/10 border border-red-500/30 rounded-xl px-3.5 py-2">
+                        Completa tu nombre y número de WhatsApp para continuar.
+                    </p>
+
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-400 text-obsidian-950 font-extrabold text-sm shadow-gold-glow hover:brightness-110 transition-all">
+                        Solicitar Ficha y Cotización
+                    </button>
+                </form>
+            </div>
+
+            <!-- Confirmación del Modal -->
+            <div id="modal-success-view" class="hidden text-center py-4">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <h4 class="text-xl font-extrabold text-white mb-2">¡Cotización Lista!</h4>
+                <p class="text-sm text-gray-300 mb-6">
+                    Hemos registrado tu interés en el <strong id="modal-success-vehicle" class="text-gold-400"></strong>. Puedes abrir el chat directo para recibir fotos adicionales al instante.
+                </p>
+                <a id="modal-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer"
+                   class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-extrabold text-sm transition-colors mb-3">
+                    Continuar en WhatsApp
+                </a>
+                <button type="button" onclick="closeVehicleModal()" class="text-xs text-gray-400 hover:text-white transition-colors">
+                    Cerrar y seguir explorando
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         BOTÓN FLOTANTE DE WHATSAPP
+         ===================================================================== -->
+    <a href="https://wa.me/50370000000?text=Hola%20Joya%20Garage%2C%20vengo%20de%20su%20p%C3%A1gina%20web%20y%20quiero%20informaci%C3%B3n%20sobre%20veh%C3%ADculos."
+       target="_blank" rel="noopener noreferrer" aria-label="Chatear por WhatsApp con Joya Garage"
+       class="whatsapp-pulse fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-110">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.828 14.125c-.25.703-1.438 1.344-2 1.422-.516.078-1.172.109-1.906-.125-.453-.141-1.031-.344-1.766-.656-3.094-1.344-5.109-4.484-5.266-4.688-.156-.203-1.266-1.688-1.266-3.219 0-1.531.797-2.281 1.078-2.594.281-.312.625-.391.828-.391.203 0 .406.016.594.016.188 0 .453-.078.703.531.25.625.875 2.141.953 2.297.078.156.125.344.016.547-.109.203-.156.344-.312.531-.156.188-.328.406-.469.547-.156.156-.328.328-.141.656.188.328.828 1.375 1.781 2.219 1.234 1.094 2.266 1.438 2.594 1.594.328.156.516.125.703-.094.188-.219.812-.953 1.031-1.281.219-.328.438-.266.734-.156.297.109 1.906.891 2.234 1.062.328.156.547.234.625.375.078.141.078.812-.172 1.516z"/></svg>
+    </a>
+
+    <!-- =====================================================================
+         LÓGICA JAVASCRIPT (EMBUDO, INVENTARIO, MODAL, FAQ, ANIMACIONES)
+         ===================================================================== -->
+    <script>
+        // Número de WhatsApp comercial simulado de Joya Garage
+        const WHATSAPP_NUMBER = '50370000000';
+
+        // ---------------------------------------------------------------------
+        // 1. DATOS DEL INVENTARIO DESTACADO
+        // ---------------------------------------------------------------------
+        const vehicles = [
+            {
+                id: 1,
+                name: 'Toyota RAV4 XLE 2021',
+                category: 'SUV',
+                status: 'Disponible',
+                year: 2021,
+                mileage: '38,400 mi',
+                transmission: 'Automática',
+                price: '$23,900',
+                image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=900&q=80',
+                fallback: 'https://placehold.co/800x500/14181F/D4AF37?text=Toyota+RAV4+2021'
+            },
+            {
+                id: 2,
+                name: 'Honda Civic Touring 2022',
+                category: 'Sedán',
+                status: 'Disponible',
+                year: 2022,
+                mileage: '24,100 mi',
+                transmission: 'CVT Turbo',
+                price: '$21,500',
+                image: 'https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=900&q=80',
+                fallback: 'https://placehold.co/800x500/14181F/D4AF37?text=Honda+Civic+2022'
+            },
+            {
+                id: 3,
+                name: 'Ford F-150 XLT 4x4 2020',
+                category: 'Pick-up',
+                status: 'En Tránsito',
+                year: 2020,
+                mileage: '52,800 mi',
+                transmission: 'Automática 10V',
+                price: '$31,800',
+                image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80',
+                fallback: 'https://placehold.co/800x500/14181F/D4AF37?text=Ford+F-150+2020'
+            },
+            {
+                id: 4,
+                name: 'Mazda CX-5 Grand Touring 2021',
+                category: 'SUV',
+                status: 'Disponible',
+                year: 2021,
+                mileage: '31,200 mi',
+                transmission: 'Automática AWD',
+                price: '$22,400',
+                image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=900&q=80',
+                fallback: 'https://placehold.co/800x500/14181F/D4AF37?text=Mazda+CX-5+2021'
+            },
+            {
+                id: 5,
+                name: 'Toyota Hilux SRV 4x4 2022',
+                category: 'Pick-up',
+                status: 'Bajo Pedido',
+                year: 2022,
+                mileage: '29,500 km',
+                transmission: 'Automática Diésel',
+                price: '$38,500',
+                image: 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=900&q=80',
+                fallback: 'https://placehold.co/800x500/14181F/D4AF37?text=Toyota+Hilux+2022'
+            },
+            {
+                id: 6,
+                name: 'Hyundai Elantra SEL 2023',
+                category: 'Sedán',
+                status: 'En Tránsito',
+                year: 2023,
+                mileage: '16,900 mi',
+                transmission: 'Automática IVT',
+                price: '$17,900',
+                image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=900&q=80',
+                fallback: 'https://placehold.co/800x500/14181F/D4AF37?text=Hyundai+Elantra+2023'
+            }
+        ];
+
+        // Devuelve estilos de insignia según estado del vehículo
+        function getStatusBadgeClasses(status) {
+            if (status === 'Disponible') {
+                return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+            }
+            if (status === 'En Tránsito') {
+                return 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+            }
+            return 'bg-sky-500/20 text-sky-300 border-sky-500/40';
+        }
+
+        // Renderiza las tarjetas del inventario filtradas
+        function renderInventory(filter = 'Todos') {
+            const grid = document.getElementById('inventory-grid');
+            const filtered = filter === 'Todos'
+                ? vehicles
+                : vehicles.filter(v => v.category === filter);
+
+            grid.innerHTML = filtered.map(vehicle => `
+                <article class="group rounded-2xl bg-obsidian-800 border border-white/10 overflow-hidden hover:border-gold-500/45 transition-all duration-300 flex flex-col justify-between shadow-card-dark">
+                    <div>
+                        <div class="relative h-52 overflow-hidden bg-obsidian-900">
+                            <img src="${vehicle.image}"
+                                 alt="${vehicle.name}"
+                                 loading="lazy"
+                                 onerror="this.onerror=null;this.src='${vehicle.fallback}';"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900/80 via-transparent to-transparent"></div>
+                            <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-md ${getStatusBadgeClasses(vehicle.status)}">
+                                ${vehicle.status}
+                            </span>
+                            <span class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-obsidian-900/80 text-gray-200 border border-white/10 backdrop-blur-md">
+                                ${vehicle.category}
+                            </span>
+                        </div>
+
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white group-hover:text-gold-400 transition-colors">${vehicle.name}</h3>
+
+                            <div class="grid grid-cols-3 gap-2 mt-4 py-3 border-y border-white/10 text-xs text-gray-400">
+                                <div>
+                                    <span class="block text-gray-500">Año</span>
+                                    <span class="font-semibold text-gray-200">${vehicle.year}</span>
+                                </div>
+                                <div>
+                                    <span class="block text-gray-500">Recorrido</span>
+                                    <span class="font-semibold text-gray-200">${vehicle.mileage}</span>
+                                </div>
+                                <div>
+                                    <span class="block text-gray-500">Caja</span>
+                                    <span class="font-semibold text-gray-200 truncate block">${vehicle.transmission}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 flex items-center justify-between gap-4">
+                        <div>
+                            <span class="block text-[11px] uppercase tracking-wider text-gray-500">Precio estimado</span>
+                            <span class="text-2xl font-black text-gold-400">${vehicle.price}</span>
+                        </div>
+                        <button type="button"
+                                onclick="openVehicleModal('${vehicle.name}', '${vehicle.price}')"
+                                class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-gold-500 text-white hover:text-obsidian-950 font-bold text-xs sm:text-sm transition-all">
+                            Cotizar este vehículo
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Configurar botones de filtro del inventario
+        function initInventoryFilters() {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => {
+                        b.className = 'filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-obsidian-800 text-gray-300 border border-white/10 hover:border-gold-500/50 transition-all';
+                    });
+                    btn.className = 'filter-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-gold-500 text-obsidian-950 transition-all';
+                    renderInventory(btn.dataset.filter);
+                });
+            });
+        }
+
+        // ---------------------------------------------------------------------
+        // 2. LÓGICA DEL EMBUDO INTERACTIVO DE 4 PASOS
+        // ---------------------------------------------------------------------
+        const funnelState = {
+            service: '',
+            vehicleType: '',
+            budget: '',
+            name: '',
+            whatsapp: '',
+            model: ''
+        };
+
+        function selectOption(field, value, nextStep) {
+            funnelState[field] = value;
+            goToStep(nextStep);
+        }
+
+        function goToStep(stepNumber) {
+            // Ocultar todos los pasos y confirmación
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`step-${i}`).classList.add('hidden');
+            }
+            document.getElementById('step-confirmation').classList.add('hidden');
+            document.getElementById('funnel-header').classList.remove('hidden');
+
+            // Mostrar el paso activo
+            const activeEl = document.getElementById(`step-${stepNumber}`);
+            if (activeEl) {
+                activeEl.classList.remove('hidden');
+            }
+
+            // Actualizar barra de progreso
+            const percent = stepNumber * 25;
+            document.getElementById('step-indicator').textContent = `Paso ${stepNumber} de 4`;
+            document.getElementById('step-percent').textContent = `${percent}% completado`;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+        }
+
+        function initFunnelForm() {
+            const form = document.getElementById('funnel-form');
+            const errorMsg = document.getElementById('funnel-error');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('lead-name').value.trim();
+                const whatsapp = document.getElementById('lead-whatsapp').value.trim();
+                const model = document.getElementById('lead-model').value.trim();
+
+                if (!name || whatsapp.length < 7) {
+                    errorMsg.classList.remove('hidden');
+                    return;
+                }
+
+                errorMsg.classList.add('hidden');
+                funnelState.name = name;
+                funnelState.whatsapp = whatsapp;
+                funnelState.model = model;
+
+                showFunnelConfirmation();
+            });
+        }
+
+        function showFunnelConfirmation() {
+            // Ocultar paso 4 y actualizar barra al 100%
+            document.getElementById('step-4').classList.add('hidden');
+            document.getElementById('step-indicator').textContent = '¡Cotización Completada!';
+            document.getElementById('step-percent').textContent = '100%';
+            document.getElementById('progress-bar').style.width = '100%';
+
+            // Rellenar resumen dinámico
+            document.getElementById('confirm-name').textContent = funnelState.name;
+            document.getElementById('summary-service').textContent = funnelState.service || 'Por definir';
+            document.getElementById('summary-type').textContent = funnelState.vehicleType || 'Por definir';
+            document.getElementById('summary-budget').textContent = funnelState.budget || 'Por definir';
+            document.getElementById('summary-whatsapp').textContent = funnelState.whatsapp;
+
+            const modelRow = document.getElementById('summary-model-row');
+            if (funnelState.model) {
+                document.getElementById('summary-model').textContent = funnelState.model;
+                modelRow.classList.remove('hidden');
+            } else {
+                modelRow.classList.add('hidden');
+            }
+
+            // Construir enlace prellenado de WhatsApp
+            let message = `Hola Joya Garage, acabo de completar mi cotización en la web:\n`;
+            message += `• Nombre: ${funnelState.name}\n`;
+            message += `• Servicio: ${funnelState.service}\n`;
+            message += `• Tipo de vehículo: ${funnelState.vehicleType}\n`;
+            message += `• Presupuesto: ${funnelState.budget}\n`;
+            if (funnelState.model) {
+                message += `• Modelo de interés: ${funnelState.model}\n`;
+            }
+            message += `• Mi WhatsApp: ${funnelState.whatsapp}`;
+
+            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            document.getElementById('whatsapp-summary-link').href = waUrl;
+
+            // Mostrar pantalla de confirmación
+            document.getElementById('step-confirmation').classList.remove('hidden');
+        }
+
+        function resetFunnel() {
+            funnelState.service = '';
+            funnelState.vehicleType = '';
+            funnelState.budget = '';
+            funnelState.name = '';
+            funnelState.whatsapp = '';
+            funnelState.model = '';
+
+            document.getElementById('funnel-form').reset();
+            document.getElementById('funnel-error').classList.add('hidden');
+            goToStep(1);
+        }
+
+        // ---------------------------------------------------------------------
+        // 3. MODAL DE COTIZACIÓN RÁPIDA DE VEHÍCULO
+        // ---------------------------------------------------------------------
+        function openVehicleModal(vehicleName, vehiclePrice) {
+            const modal = document.getElementById('vehicle-modal');
+            document.getElementById('modal-vehicle-name').value = vehicleName;
+            document.getElementById('modal-vehicle-price').value = vehiclePrice;
+            document.getElementById('modal-title').textContent = vehicleName;
+            document.getElementById('modal-vehicle-subtitle').textContent = `Precio estimado: ${vehiclePrice} USD • Solicita fotos, historial y disponibilidad.`;
+
+            document.getElementById('modal-form-view').classList.remove('hidden');
+            document.getElementById('modal-success-view').classList.add('hidden');
+            document.getElementById('modal-error').classList.add('hidden');
+            document.getElementById('modal-quote-form').reset();
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVehicleModal() {
+            const modal = document.getElementById('vehicle-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function initModalForm() {
+            const modal = document.getElementById('vehicle-modal');
+            const form = document.getElementById('modal-quote-form');
+            const errorEl = document.getElementById('modal-error');
+
+            // Cerrar al hacer clic fuera de la tarjeta modal
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeVehicleModal();
+            });
+
+            // Cerrar con tecla Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeVehicleModal();
+                }
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('modal-name').value.trim();
+                const phone = document.getElementById('modal-phone').value.trim();
+                const notes = document.getElementById('modal-notes').value.trim();
+                const vehicleName = document.getElementById('modal-vehicle-name').value;
+                const vehiclePrice = document.getElementById('modal-vehicle-price').value;
+
+                if (!name || phone.length < 7) {
+                    errorEl.classList.remove('hidden');
+                    return;
+                }
+
+                errorEl.classList.add('hidden');
+                document.getElementById('modal-success-vehicle').textContent = vehicleName;
+
+                let msg = `Hola Joya Garage, soy ${name}. Me interesa cotizar el vehículo: ${vehicleName} (${vehiclePrice}).`;
+                if (notes) msg += ` Consulta: ${notes}`;
+
+                document.getElementById('modal-whatsapp-link').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+                document.getElementById('modal-form-view').classList.add('hidden');
+                document.getElementById('modal-success-view').classList.remove('hidden');
+            });
+        }
+
+        // ---------------------------------------------------------------------
+        // 4. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
+        // ---------------------------------------------------------------------
+        function initFaqAccordion() {
+            const triggers = document.querySelectorAll('.faq-trigger');
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const content = trigger.nextElementSibling;
+                    const icon = trigger.querySelector('.faq-icon');
+                    const isOpen = !content.classList.contains('hidden');
+
+                    // Cerrar otros elementos para mantener el acordeón limpio
+                    document.querySelectorAll('.faq-content').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.faq-icon').forEach(ic => ic.classList.remove('rotate-180'));
+
+                    if (!isOpen) {
+                        content.classList.remove('hidden');
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+        }
+
+        // ---------------------------------------------------------------------
+        // 5. MENÚ MÓVIL Y ANIMACIONES AL HACER SCROLL
+        // ---------------------------------------------------------------------
+        function initMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+            const links = document.querySelectorAll('.mobile-nav-link');
+
+            function toggleMenu() {
+                const isHidden = menu.classList.toggle('hidden');
+                openIcon.classList.toggle('hidden', !isHidden);
+                closeIcon.classList.toggle('hidden', isHidden);
+            }
+
+            btn.addEventListener('click', toggleMenu);
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!menu.classList.contains('hidden')) toggleMenu();
+                });
+            });
+        }
+
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+
+                revealElements.forEach(el => observer.observe(el));
+            } else {
+                revealElements.forEach(el => el.classList.add('visible'));
+            }
+        }
+
+        // Inicialización general al cargar el documento
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            renderInventory('Todos');
+            initInventoryFilters();
+            initFunnelForm();
+            initModalForm();
+            initFaqAccordion();
+            initMobileMenu();
+            initScrollReveal();
+        });
+    </script>
+</body>
+</html>
